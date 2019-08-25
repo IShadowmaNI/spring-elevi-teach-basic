@@ -1,4 +1,4 @@
-package entity;
+package spring.boot.b7.boot.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 

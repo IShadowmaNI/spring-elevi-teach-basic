@@ -1,4 +1,4 @@
-package entity;
+package spring.boot.b7.boot.entity;
 
 
 import org.hibernate.annotations.GenericGenerator;
@@ -33,10 +33,7 @@ public class Elevi {
     @OneToMany(mappedBy = "elevi")
     List<Note> note;
 
-    public Elevi(String numeElev, Clasa clasa) {
-        this.numeElev = numeElev;
-        this.clasa = clasa;
-    }
+
 
     public Elevi() {
     }
