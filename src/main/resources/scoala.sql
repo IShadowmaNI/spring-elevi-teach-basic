@@ -1,24 +1,23 @@
 create schema `scoala`;
 USE `scoala`;
-​
+
 CREATE TABLE `scoala`.`clasa` (
                                   `idClasa` INT NOT NULL AUTO_INCREMENT,
                                   `numeClasa` VARCHAR(45) NOT NULL,
                                   PRIMARY KEY (`idClasa`));
-​
+
 CREATE TABLE `scoala`.`elevi` (
                                   `idElev` INT NOT NULL AUTO_INCREMENT,
                                   `numeElev` VARCHAR(45) NOT NULL,
                                   `idClasa` INT NOT NULL,
                                   PRIMARY KEY (`idElev`),
                                   Constraint FOREIGN KEY (`idClasa`) REFERENCES clasa(`idClasa`));
-​
-​
+
 CREATE TABLE `scoala`.`materie` (
                                     `idMaterie` INT NOT NULL AUTO_INCREMENT,
                                     `numeMaterie` VARCHAR(45) NULL,
                                     PRIMARY KEY (`idMaterie`));
-​
+
 CREATE TABLE `scoala`.`profesori` (
                                       `idProfesor` INT NOT NULL AUTO_INCREMENT,
                                       `numeProfesor` VARCHAR(45) NULL,
@@ -26,7 +25,7 @@ CREATE TABLE `scoala`.`profesori` (
                                       PRIMARY KEY (`idProfesor`),
                                       Constraint FOREIGN KEY (`idMateriePredata`) REFERENCES materie(`idMaterie`))
 ;
-​
+
 CREATE TABLE `scoala`.`note` (
                                  `idNote` INT NOT NULL AUTO_INCREMENT,
                                  `valoareNota` VARCHAR(45) NULL,
@@ -44,29 +43,27 @@ create table medii
     valoareMedie int null,
     idElev int null,
     idMaterie int null,
-    constraint medii___fk_elev
+    constraint medii_fk_elev
         foreign key (idElev) references elevi (idElev),
-    constraint medii___fk_materie
+    constraint medii_fk_materie
         foreign key (idMaterie) references materie (idMaterie)
 );
-​
+
 create unique index medii_idMedie_uindex
     on medii (idMedie);
-​
-​
-​
+
 insert into scoala.clasa (numeClasa) values
 ('9A'),
 ('10A'),
 ('11A');
-​
+
 insert into scoala.materie (numeMaterie) values
 ('Matematica'),
 ('Fizica'),
 ('Religie'),
 ('Informatica'),
 ('Traforaj');
-​
+
 insert into scoala.profesori (numeProfesor,idMateriePredata)
 values
 ('Mirela Manolescu', 1),
@@ -78,16 +75,15 @@ values
     select idMaterie from scoala.materie
     where numeMaterie = 'Fizica')),
 ('Floriocel Gherorge', 3);
-​
+
 create view allProfi as
 select numeProfesor, numeMaterie from scoala.profesori inner join
                                       scoala.materie on profesori.idMateriePredata = materie.idMaterie;
-​
+
 create view clasa10A as
 select numeElev, numeClasa from scoala.elevi inner join scoala.clasa
                                                         on elevi.idClasa = clasa.idClasa where clasa.numeClasa = '10A';
-​
-​
+
 insert into scoala.elevi(numeElev, idClasa) values
 ('Cristi',1),
 ('Mircea', 1),
@@ -104,7 +100,7 @@ insert into scoala.elevi(numeElev, idClasa) values
 ('Nicu', 3),
 ('Florian',3),
 ('Andrei',3);
-​
+
 insert into scoala.note (valoareNota, idProfesor, idMaterie, idElev)
 values
 (10,

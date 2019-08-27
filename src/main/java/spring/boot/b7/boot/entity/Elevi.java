@@ -55,4 +55,8 @@ public class Elevi {
     public String getNumeElev() {
         return numeElev;
     }
+
+    public String getNumeClasa() {
+        return clasa.numeClasa;
+    }
 }
