@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Casette extends AbstractMedia implements Tape {
 
-
     public Casette(@Value("${casette.mediaName}") String mediaName,
-                   @Value("${casette.artistName}") String artistName) {
+                   @Value("Barosani") String artistName) {
         this.mediaName = mediaName;
         this.artistName = artistName;
     }
-    public Casette() {}
+
+
     @Override
     public void rewindByHand() {
         System.out.println("rewinding..." + mediaName);
@@ -20,12 +20,12 @@ public class Casette extends AbstractMedia implements Tape {
 
     @Override
     public String showArtistName() {
-        return null;
+        return mediaName;
     }
 
     @Override
     public String showAlbumName() {
-        return null;
+        return artistName;
     }
 
 //    @Override

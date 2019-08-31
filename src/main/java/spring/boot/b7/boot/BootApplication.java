@@ -23,13 +23,13 @@ public class BootApplication {
         System.out.println(elevul.get().getNumeClasa());
         System.out.println(eleviRepository.findByClasa_IdClasaAndIdElevGreaterThan(2, 8).toString());
 
-//        Casette bean = context.getBean(Casette.class);
-//
-//        System.out.println(bean.showAlbumName());
-//        System.out.println(bean.showArtistName());
+        Casette bean = context.getBean(Casette.class);
 
-        CasettePlayer bean = context.getBean(CasettePlayer.class);
-        bean.play();
+        System.out.println(bean.showAlbumName());
+        System.out.println(bean.showArtistName());
+
+//        CasettePlayer bean = context.getBean(CasettePlayer.class);
+//        bean.play();
     }
 
 
